@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Better Shine Enterprise — Metal Finishing & Galvanizing</title>
+  <meta name="description" content="Electro-Galvanizing, Hot-Dip Galvanizing, Chroming & Engraving — Better Shine Enterprises" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root{
+      --accent:#4b4b4b;
+      --dark:#0f1720;
+      --muted:#6b7280;
+      --card:#ffffff;
+      --bg:#f7f8fa;
+      --accent-2:#4b4b4b;
+      --primary: #4b4b4b;
+    }
+
+    /* Base */
+    *{box-sizing:border-box;scroll-behavior:smooth}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;line-height:1.6;margin:0;color:var(--dark);background:var(--bg)}
+    .container{width:100%;max-width:1500px;margin:0 auto;padding:0 16px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 16px;position:sticky;top:0;background:#e0e0e0;z-index:999;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:52px;height:52px;border-radius:8px;background:#4b4b4b;display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    .brand .title{display:flex;flex-direction:column}
+    .brand .title .name{font-weight:700}
+    .brand .title .tag{font-size:9px;color:var(--muted)}
+    .tag {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 9px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #00eaff, #0066ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 600;
+}
+
+
+    /* Nav */
+    nav{display:flex;align-items:center;gap:18px}
+    nav a{color:#0f1720;text-decoration:none;transition:color 0.2s;font-weight:500}
+    nav a:hover{color:var(--accent)}
+    .nav-toggle{display:none;cursor:pointer;font-size:28px;font-weight:700;background:transparent;border:none}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin:28px 0;opacity:0;transform:translateY(40px);transition:all 0.8s ease-in-out}
+    .hero p{color: white;font-size:25px;
+  font-weight: 700; }
+    .fade-in{opacity:1 !important;transform:translateY(0) !important}
+    .hero h1 {
+  font-size: 57px;
+  font-weight: 800;
+  font-family: 'Orbitron', sans-serif;
+  color:whitesmoke;
+  text-shadow: 0 3px 20px rgba(0,0,0,0.9);
+}
+.hero h2
+{
+  color: #C0C0C0;
+font-family: 'Dekko', cursive; /* <-- change to Dekko */
+  font-size: 40px;
+  font-weight: 700; /* Dekko looks best at bold */
+  font-style: italic;
+}
+
+
+
+    .cta{display:flex;gap:12px;margin-top:16px}
+    .btn{background:#4b4b4b;color:whitesmoke;text-decoration:none;padding:12px 18px;border-radius:8px;cursor:pointer;transition:all 0.3s}
+    .btn:hover{box-shadow:0 6px 16px rgba(0,0,0,0.15);transform:translateY(-2px)}
+    .btn.ghost{background:;color:wheat;border:1px solid rgba(11,110,79,0.12)}
+
+    /* Cards */
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(16,24,40,0.04);opacity:0;transform:translateY(20px);transition:all 0.8s ease-in-out}
+    .card.fade-in{opacity:1;transform:translateY(0)}
+
+    /* Section header styling */
+    section h2{font-size:28px;text-align:center;color:var(--accent);margin-bottom:12px;letter-spacing:1px}
+    .services-intro{max-width:880px;margin:0 auto 20px;text-align:center;color:var(--muted);line-height:1.5}
+
+    /* Services grid */
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin:22px 0;padding:6px}
+    .service{padding:18px;border-radius:12px;border:1px solid rgba(15,23,32,0.04);background:#fff;text-align:center;position:relative;overflow:visible}
+    .service i.icon-main{font-size:36px;color:var(--accent);margin-bottom:10px;transition:transform 0.25s}
+    .service h3{margin:8px 0 6px;color:var(--dark)}
+    .service p.lead{color:var(--muted);font-size:14px;margin:0 auto 12px;max-width:280px}
+
+    /* Demo image */
+    .service img{width:100%;height:300px;object-fit:cover;border-radius:10px;margin-bottom:20px;transition:transform 0.35s,box-shadow 0.35s}
+    .service img:hover{transform:scale(1.04);box-shadow:0 10px 30px rgba(0,0,0,0.12)}
+
+    /* Service description bullets (visual) */
+    .service-desc{margin-top:8px;text-align:left}
+    .service-desc .sub-point{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;color:var(--muted);line-height:1.3}
+    .service-desc .sub-point .sub-icon{font-size:14px;color:var(--accent);width:18px;text-align:center;flex-shrink:0;transition:transform 0.25s}
+    .service-desc .sub-point:hover .sub-icon{transform:scale(1.15) rotate(6deg)}
+    .service-desc .sub-point .text{font-size:14px;color:var(--dark)}
+
+    /* Animation classes for reveal */
+    .service { opacity: 0; transform: translateY(26px); transition: all 0.55s cubic-bezier(.2,.9,.3,1); }
+    .service.revealed { opacity: 1; transform: translateY(0); }
+    .sub-point { opacity: 0; transform: translateX(-10px); transition: all 0.35s ease-out; }
+    .sub-point.revealed { opacity:1; transform: translateX(0); }
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}
+    .gallery img{width:100%;height:300px;object-fit:cover;border-radius:8px;transition:transform 0.3s,box-shadow 0.3s}
+    .gallery img:hover{transform:scale(1.05);box-shadow:0 8px 20px rgba(0,0,0,0.15)}
+
+    /* Footer & forms */
+    footer{border-top:1px solid rgba(15,23,32,0.06);padding:18px 0;margin-top:28px;color:var(--muted)}
+    input,textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9ee}
+    textarea{min-height:120px}
+
+    /* Responsive tweaks */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:768px){
+      .nav-toggle{display:block}
+      nav{position:absolute;top:70px;right:0;background:white;width:240px;flex-direction:column;gap:6px;padding:12px;box-shadow:0 6px 30px rgba(0,0,0,0.12);display:none;z-index:120;}
+      nav.show{display:flex;}
+      .hero{grid-template-columns:1fr}
+      .service img{height:200px}
+    }
+    @media (max-width:520px){
+      .gallery{grid-template-columns:1fr}
+      .service img{height:200px}/* Home Hero Video Background */
+      }
+.home-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+
+}
+.whatsapp-float {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  background: #25D366;
+  text-decoration: none;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  z-index: 9999;
+  transition: all .3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.35);
+}
+.contact-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  flex: 1; /* allow it to sit nicely in header without breaking other items */
+}
+
+.contact-header span {
+  font-weight: 900;
+  color: #000;
+  font-size: 16px;
+}
+
+.contact-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.contact-buttons .btn {
+  padding: 6px 14px;
+  font-size: 13px;
+}
+.hero{
+  background-image: url('images/fiial.jpg');
+  background-size: cover;        /* fill container */
+  background-position: center;   /* center the image */
+  background-repeat: no-repeat;  /* prevent tiling */
+  min-height: 100vh;             /* fill viewport height */
+  margin: 0;                     /* remove any gap */
+  padding: 0;                    /* remove extra padding */
+  }
+
+.hero h1, .hero h2, .hero p {
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+ 
+@media (max-width:768px){
+  #contact .card {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media (max-width:480px){
+  #contact form div:last-child { text-align: center; }
+}
+.demo-flex {
+  display: flex;
+  gap: 24px;
+  justify-content: center;  /* or space-between */
+  align-items: stretch;
+  flex-wrap: nowrap;
+  flex-wrap: wrap; /* fallback for small screens */
+}
+
+.demo-card {
+  flex: 1 1 300px;  /* grow, shrink, basis 300px */
+  max-width: 520px; /* optional max width for consistency */
+  height: 240px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+}
+
+.demo-card video,
+.demo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.video-label {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  padding: 6px;
+  font-size: 13px;
+  border-bottom-left-radius:12px;
+  border-bottom-right-radius:12px;
+}
+
+@media (max-width: 1024px) {
+  .demo-flex { flex-wrap: wrap; justify-content: center; }
+  .demo-card { width: 100%; height: auto; aspect-ratio: 16/9; }
+}
+
+@media (max-width: 768px) {
+  .demo-flex { flex-direction: column; align-items: center; }
+  .demo-card { width: 100%; height: auto; aspect-ratio: 16/9; }
+}
+
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">BS</div>
+        <div class="title">
+          <div class="name">Better Shine</div>
+          <div class="tag">Precision Surface Protection & Metal Finishing</div>
+        </div>
+      </div>
+      <div class="contact-header">
+  <span>Talk to us now!</span>
+  <div class="contact-buttons">
+    <a href="tel:+254721347467" class="btn">Call</a>
+    <a href="https://wa.me/254721347467" target="_blank" class="btn" style="background:#000">WhatsApp</a>
+  </div>
+</div>
+
+
+      <!-- mobile toggle -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">☰</button>
+
+      <!-- nav (links close on click) -->
+      <nav id="navbar" role="navigation" aria-label="Main navigation">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HOME (kept exactly, only layout/styling applied above) -->
+      <section id="home" class="hero">
+        <div>
+           <h1>BETTER SHINE ENTERPRISES
+           
+          </h1>
+          <h2>Precision. Durability. Shine
+           
+          </h2>
+        <p>We protect and enhance metal components with industrial-grade electro-galvanizing, hot-dip galvanizing, chroming and professional engraving. Reliable finishes, fast turnaround, competitive pricing.</p>
+          <div class="cta">
+            <a class="btn" href="#contact">Request a Quote</a>
+            <a class="btn ghost" href="#services">View Services</a>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-top:20px">
+            <div class="card" style="flex:1;min-width:160px">
+              <strong>Fast Turnaround</strong>
+              <div style="font-size:13px;color:var(--muted);margin-top:6px">Small batches to large industrial runs</div>
+            </div>
+            <div class="card" style="flex:1;min-width:160px">
+              <strong>Industrial Standards</strong>
+              <div style="font-size:13px;color:var(--muted);margin-top:6px">Quality coatings built to last</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card">
+          <h3 style="margin-top:0">Request a quick quote</h3>
+          <form id="quoteForm">
+  <div style="margin-bottom:8px"><input name="name" placeholder="Your name" required></div>
+  <div style="margin-bottom:8px"><input name="email" type="email" placeholder="Email" required></div>
+  <div style="margin-bottom:8px">
+    <select name="service" required>
+      <option value="">Select service</option>
+      <option>Electro-Galvanizing</option>
+      <option>Hot-Dip Galvanizing</option>
+      <option>Chroming</option>
+      <option>Engraving</option>
+      <option>Polishing</option>
+      <option>Electroplating</option>
+      <option>Buffing</option>
+      <option>Galvanizing</option>
+    </select>
+  </div>
+  <div style="margin-bottom:8px"><textarea name="message" placeholder="Project details (dimensions, quantity, finish)" required></textarea></div>
+  <div style="text-align:right"><button type="submit" class="btn">Send</button></div>
+</form>
+
+        </aside>
+      </section>
+<!-- Demo Video + Images Carousel Section -->
+<!-- Demo Video & Carousel Section -->
+<section id="demo-intro" style="margin:48px 0;">
+  <h2 style="text-align:center; color:var(--accent); margin-bottom:12px;">See Our Work in Action</h2>
+  <p style="text-align:center; color:var(--muted); max-width:700px; margin:0 auto 24px;">
+    A quick overview of our metal finishing processes, showcasing quality, precision, and shine.
+  </p>
+
+  <div class="demo-flex">
+    <!-- Video Card 1 -->
+    <div class="demo-card">
+      <video autoplay muted loop playsinline>
+        <source src="images/ytr.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-label">High-quality metal finishing</div>
+    </div>
+
+    <!-- Video Card 2 -->
+    <div class="demo-card">
+      <video autoplay muted loop playsinline>
+        <source src="images/vid.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-label">Precision galvanizing</div>
+    </div>
+
+    <!-- Video or Carousel Card 3 -->
+    <div class="demo-card">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="images/333.jpg" alt="Demo 1"></div>
+          <div class="swiper-slide"><img src="images/222.jpg" alt="Demo 3"></div>
+          <div class="swiper-slide"><img src="images/bb.jpg" alt="Demo 2"></div>
+          <div class="swiper-slide"><img src="images/dd.jpg" alt="Demo 3"></div>
+          <div class="swiper-slide"><img src="images/cc.jpg" alt="Demo 3"></div>
+          <div class="swiper-slide"><img src="images/111.jpg" alt="Demo 3"></div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Styles -->
+<style>
+.demo-flex {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.demo-card {
+  width: 480px;      /* fixed width */
+  height: 470px;     /* fixed height for 16:9 ratio */
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+}
+
+.demo-card video,
+.demo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* fill card without distortion */
+  border-radius: 12px;
+}
+
+/* Video label */
+.video-label {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  padding: 6px;
+  font-size: 13px;
+  border-bottom-left-radius:12px;
+  border-bottom-right-radius:12px;
+}
+
+/* Swiper container styling */
+.swiper-container { width: 100%; height: 100%; }
+.swiper-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+
+/* Responsive: stack on mobile */
+@media (max-width: 768px) {
+  .demo-flex { flex-direction: column; align-items: center; }
+  .demo-card { width: 100%; height: auto; aspect-ratio: 16/9; }
+}
+</style>
+
+<!-- Swiper.js CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+<!-- Swiper Initialization -->
+<script>
+const swiper = new Swiper('.swiper-container', {
+  loop: true,                // infinite loop
+  slidesPerView: 1,          // one slide at a time
+  spaceBetween: 16,
+  autoplay: { 
+    delay: 3000,             // 3 seconds per slide
+    disableOnInteraction: false
+  },
+  pagination: { el: '.swiper-pagination', clickable: true },
+  navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
+});
+</script>
+
+
+
+
+
+      <!-- SERVICES (enhanced) -->
+      <section id="services">
+        <h2>Our Services</h2>
+        <p class="services-intro">At Better Shine Enterprise we deliver professional metal finishing services that combine durability, corrosion protection and fine aesthetics. Below each service you’ll find a demo of our work.</p>
+        <div class="services">
+          <!-- Electro-Galvanizing -->
+          <div class="service" data-service-index="0">
+            <i class="icon-main fas fa-cogs" aria-hidden="true"></i>
+            <h3>Electro-Galvanizing</h3>
+            <p class="lead">Thin, uniform zinc coating applied via electroplating — excellent for small parts and fasteners.</p>
+            <img src="images/electro.png" alt="Electro-Galvanizing demo">
+            <div class="service-desc">
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-check-circle"></i></span><span class="text">Uniform zinc layer for even protection</span></div>
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-bolt"></i></span><span class="text">Quick turnaround for small batches</span></div>
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-shield-alt"></i></span><span class="text">Cleaner finish suited to fasteners & electronics</span></div>
+            </div>
+          </div>
+          <!-- Cold Galvanizing -->
+<div class="service" data-service-index="1">
+  <i class="icon-main fas fa-industry" aria-hidden="true"></i>
+  <h3>Cold Galvanizing</h3>
+  <p class="lead">Protective zinc-rich coating applied at room temperature ideal for touch-ups and maintenance on galvanized surfaces.</p>
+  <img src="images/geo.jpg" alt="Cold Galvanizing demo">
+  <div class="service-desc">
+    <div class="sub-point"><span class="sub-icon"><i class="fas fa-tools"></i></span><span class="text">Ideal for repairing or touching up damaged galvanized surfaces</span></div>
+    <div class="sub-point"><span class="sub-icon"><i class="fas fa-shield-alt"></i></span><span class="text">Provides long-lasting corrosion resistance</span></div>
+  </div>
+</div>
+
+
+          <!-- Hot-Dip Galvanizing -->
+          <div class="service" data-service-index="1">
+            <i class="icon-main fas fa-industry" aria-hidden="true"></i>
+            <h3>Hot-Dip Galvanizing</h3>
+            <p class="lead">Thick zinc coating from immersion in molten zinc ideal for heavy-duty and outdoor applications.</p>
+            <img src="images/hotdip.jpg" alt="Hot-Dip Galvanizing demo">
+            <div class="service-desc">
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-fire"></i></span><span class="text">Thick, rugged zinc layer for durability</span></div>
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-building"></i></span><span class="text">Perfect for structural and outdoor components</span></div>
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-shield-alt"></i></span><span class="text">Exceptional long-term corrosion protection</span></div>
+            </div>
+          </div>
+
+          <!-- Chroming -->
+          <div class="service" data-service-index="2">
+            <i class="icon-main fas fa-tint" aria-hidden="true"></i>
+            <h3>Chroming</h3>
+            <p class="lead">High-gloss chrome plating for decorative appeal and added corrosion resistance.</p>
+            <img src="images/chroig.jpg" alt="Chroming demo">
+            <div class="service-desc">
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-magic"></i></span><span class="text">Mirror-like decorative finish</span></div>
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-motorcycle"></i></span><span class="text">Great for trims, accessories & parts</span></div>
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-shield-alt"></i></span><span class="text">Extra resistance to wear and corrosion</span></div>
+            </div>
+          </div>
+
+          <!-- Engraving -->
+          <div class="service" data-service-index="3">
+            <i class="icon-main fas fa-pen-fancy" aria-hidden="true"></i>
+            <h3>Engraving</h3>
+            <p class="lead">Precision engraving for identification, traceability and branding on plates and components.</p>
+            <img src="images/egrii.jpg" alt="Engraving demo">
+            <div class="service-desc">
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-id-badge"></i></span><span class="text">Accurate serial numbers & logos</span></div>
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-tools"></i></span><span class="text">Works on metals, plates and tags</span></div>
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-star"></i></span><span class="text">Durable, legible marks for traceability</span></div>
+            </div>
+          </div>
+
+          
+          <!-- Polishing -->
+          <div class="service" data-service-index="4">
+            <i class="icon-main fas fa-shine" aria-hidden="true"></i>
+            <h3>Polishing</h3>
+            <p class="lead">Professional polishing to create smooth, reflective surfaces that enhance appearance and longevity.</p>
+            <img src="images/polishi.jpg" alt="Polishing demo">
+            <div class="service-desc">
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-star"></i></span><span class="text">Smooth, high-gloss finishes</span></div>
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-layer-group"></i></span><span class="text">Removes minor defects & improves aesthetics</span></div>
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-shield-alt"></i></span><span class="text">Protects surfaces and extends life</span></div>
+            </div>
+          </div>
+
+          <!-- Electroplating -->
+          <div class="service" data-service-index="5">
+            <i class="icon-main fas fa-plug" aria-hidden="true"></i>
+            <h3>Electroplating</h3>
+            <p class="lead">Electrochemical metal coatings for improved corrosion resistance, wear resistance or decorative finishes.</p>
+            <img src="images/electroplatig.jpg" alt="Electroplating demo">
+            <div class="service-desc">
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-bolt"></i></span><span class="text">Precise metal deposition control</span></div>
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-eye-dropper"></i></span><span class="text">Custom finishes to spec</span></div>
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-shield-alt"></i></span><span class="text">Functional and decorative improvements</span></div>
+            </div>
+          </div>
+
+          <!-- Buffing -->
+          <div class="service" data-service-index="6">
+            <i class="icon-main fas fa-bolt" aria-hidden="true"></i>
+            <h3>Buffing</h3>
+            <p class="lead">Mechanical polishing to remove scratches and produce a mirror-like finish on metal surfaces.</p>
+            <img src="images/buffing.jpg" alt="Buffing demo">
+            <div class="service-desc">
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-eraser"></i></span><span class="text">Removes tiny surface imperfections</span></div>
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-magic"></i></span><span class="text">Achieves lustrous, reflective finish</span></div>
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-shield-alt"></i></span><span class="text">Enhances overall appearance</span></div>
+            </div>
+          </div>
+
+          <!-- Galvanizing -->
+          <div class="service" data-service-index="7">
+            <i class="icon-main fas fa-shield-alt" aria-hidden="true"></i>
+            <h3>Galvanizing</h3>
+            <p class="lead">Protective zinc coating on steel/iron to prevent rust — suitable for structural and outdoor components.</p>
+            <img src="images/galizig.jpg" alt="Galvanizing demo">
+            <div class="service-desc">
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-industry"></i></span><span class="text">Full-coverage protective zinc layers</span></div>
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-tools"></i></span><span class="text">Great for heavy structures & frameworks</span></div>
+              <div class="sub-point"><span class="sub-icon"><i class="fas fa-shield-alt"></i></span><span class="text">Superior corrosion resistance outdoors</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS & GALLERY (exact images/order preserved) -->
+      <section id="projects">
+        <h2>Projects & Gallery</h2>
+        <p style="color:var(--muted)">Before & after images — show the quality of our finishes.</p>
+        <div class="gallery">
+          <img src="images/ew.jpeg" alt="Project 1">
+          <img src="images/3.jpeg" alt="Project 2">
+          <img src="images/4.jpeg" alt="Project 3">
+          <img src="images/6.jpeg" alt="Project 4">
+          <img src="images/13.jpeg" alt="Project 5">
+          <img src="images/9.jpeg" alt="Project 6">
+          <img src="images/10.jpeg" alt="Project 7">
+          <img src="images/11.jpeg" alt="Project 8">
+          <img src="images/15.jpeg" alt="Project 9">
+          <img src="images/2.jpeg" alt="Project 10">
+          <img src="images/14.jpeg" alt="Project 11">
+          <img src="images/1.jpeg" alt="Project 12">
+          <img src="images/8.jpeg" alt="Project 13">
+          <img src="images/at.jpeg" alt="Project 14">
+          <img src="images/12.jpeg" alt="Project 15">
+        </div>
+      </section>
+
+      <!-- CONTACT (unchanged) -->
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="card">
+          <div>
+            <p style="color:var(--muted)">Reach out for quotes, technical questions or to book a pickup. We work with both small workshops and large industrial clients.</p>
+            <p><strong>Address:</strong> kariobangi junction,opposite postbank</p>
+            <p><strong>Phone:</strong> +254721347467</p>
+            <p><strong>Email:</strong> diskey120@gmail.com</p>
+   
+
+
+          </div>
+
+          <aside>
+            <form id="contactForm">
+  <div style="margin-bottom:8px"><input name="name" placeholder="Your name" required></div>
+  <div style="margin-bottom:8px"><input name="email" type="email" placeholder="Email" required></div>
+  <div style="margin-bottom:8px"><input name="phone" placeholder="Phone" required></div>
+  <div style="margin-bottom:8px"><textarea name="message" placeholder="How can we help?" required></textarea></div>
+  <div style="text-align:right"><button type="submit" class="btn">Send</button></div>
+</form>
+
+          </aside>
+        </div>
+           <div class="map-container">
+  <div class="map-container">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.86493518333!2d36.87645791015287!3d-1.2525754987302125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1431de34b72d%3A0xc14c3ae4b2e04b11!2sKariobangi%20Junction!5e0!3m2!1sen!2ske!4v1764293944554!5m2!1sen!2ske"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+       
+      </section>
+    </main>
+
+    <footer class="footer">
+  <div class="footer-container container">
+    <!-- Company Info -->
+    <div class="footer-col">
+      <h3 class="footer-title">Better Shine Enterprise</h3>
+      <p class="footer-text">
+        Precision surface protection and metal finishing. Delivering high-quality, durable finishes for industrial and decorative needs.
+      </p>
+      
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-col">
+      <h4 class="footer-title">Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-col">
+      <h4 class="footer-title">Contact</h4>
+      <p class="footer-text"><i class="fas fa-map-marker-alt"></i> kariobangi junction,opposite postbank</p>
+      <p class="footer-text"><i class="fas fa-phone"></i> +254 721 347 467</p>
+      <p class="footer-text"><i class="fas fa-envelope"></i> diskey120@gmail.com</p>
+    </div>
+
+    <!-- Social Links -->
+<div class="footer-col">
+  <h4 class="footer-title">Follow Us</h4>
+  <div class="footer-socials">
+    <!-- Only Facebook -->
+    <a href="https://www.facebook.com/profile.php?id=61550495799884" target="_blank" rel="noopener noreferrer" 
+       style="background:#1877F2; color:white; width:36px; height:36px; display:flex; 
+       box-shadow: inset 0 -2px 4px rgba(0,0,0,0.2), 0 4px 6px rgba(0,0,0,0.2); /* 3D look */
+              align-items:center; justify-content:center; border-radius:50%; text-decoration:none; 
+              font-size:18px; transition:transform 0.3s;">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+  </div>
+</div>
+
+
+  <div class="footer-bottom">
+    Built with care • © 2025 Better Shine Enterprise. All rights reserved.
+  </div>
+</footer>
+
+<style>
+.footer {
+  background: #e0e0e0;
+  color: #fff;
+  padding: 40px 16px 20px;
+  font-size: 14px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;       /* allows responsive wrapping */
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.footer-col {
+  flex: 1;               /* equal width columns */
+  min-width: 200px;      /* stack if narrower */
+}
+
+.footer-title {
+  color: #000;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.footer-text {
+  color: #000;
+  margin: 4px 0;
+  line-height: 1.6;
+}
+
+.footer-copy {
+  color: #000;
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #000;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #0b6e4f;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.footer-socials a {
+  color: #000;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.footer-socials a:hover {
+  color: #0b6e4f;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 24px;
+  padding-top: 16px;
+  text-align: center;
+  color: #000;
+  font-size: 13px;
+}
+
+/* Responsive: stack columns on small screens */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+/* Make Google Map responsive */
+.map-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56%; /* 16:9 ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+
+
+
+</style>
+
+      
+</footer>
+
+  </div>
+
+  <script>
+    /* fade-in for hero/cards/services on scroll (keeps previous behaviour but extended) */
+    function fadeInOnScroll() {
+      const elements = document.querySelectorAll('.hero, .card, .service');
+      const windowBottom = window.innerHeight;
+      elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if(rect.top < windowBottom - 50) {
+          el.classList.add('fade-in');
+        }
+      });
+    }
+    window.addEventListener('scroll', fadeInOnScroll);
+    window.addEventListener('load', fadeInOnScroll);
+
+    /* NAV: toggle, close on link click, close on outside click */
+    const navToggle = document.getElementById('nav-toggle');
+    const navbar = document.getElementById('navbar');
+    navToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navbar.classList.toggle('show');
+    });
+    // close when nav link clicked
+    document.querySelectorAll('.nav-link').forEach(a => a.addEventListener('click', () => navbar.classList.remove('show')));
+    // close when click outside nav
+    document.addEventListener('click', (e) => {
+      if(navbar.classList.contains('show') && !navbar.contains(e.target) && !navToggle.contains(e.target)){
+        navbar.classList.remove('show');
+      }
+    });
+
+    /* Services reveal + staggered bullet reveal */
+    function revealServices() {
+      const services = Array.from(document.querySelectorAll('.service'));
+      const triggerPoint = window.innerHeight - 80;
+      services.forEach((s, idx) => {
+        const rect = s.getBoundingClientRect();
+        if(rect.top < triggerPoint) {
+          if(!s.classList.contains('revealed')) {
+            s.classList.add('revealed');
+            // reveal bullets with stagger
+            const bullets = s.querySelectorAll('.sub-point');
+            bullets.forEach((b, i) => {
+              setTimeout(() => b.classList.add('revealed'), i * 120);
+            });
+          }
+        }
+      });
+    }
+    window.addEventListener('scroll', revealServices);
+    window.addEventListener('load', revealServices);
+
+    /* Accessibility: hide nav when resizing to desktop (ensure consistent state) */
+    window.addEventListener('resize', () => {
+      if(window.innerWidth > 768) navbar.classList.remove('show');
+    });
+  
+  </script>
+  <a href="https://wa.me/254721347467" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+<script>
+  const whatsappNumber = "254721347467"; // your WhatsApp number
+
+  function sendToWhatsApp(formId, messageTemplate) {
+    const form = document.getElementById(formId);
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      let message = messageTemplate;
+
+      // Replace placeholders with actual values
+      for (let [key, value] of formData.entries()) {
+        message = message.replace(`{{${key}}}`, value);
+      }
+
+      const url = `https://wa.me/${whatsappNumber}?text=` + encodeURIComponent(message);
+      window.open(url, "_blank");
+    });
+  }
+
+  // Quote form template
+  const quoteTemplate = `Hello! I want a quote.
+Name: {{name}}
+Email: {{email}}
+Service: {{service}}
+Project details: {{message}}`;
+
+  // Contact form template
+  const contactTemplate = `Hello! I have an inquiry.
+Name: {{name}}
+Email: {{email}}
+Phone: {{phone}}
+Message: {{message}}`;
+
+  sendToWhatsApp("quoteForm", quoteTemplate);
+  sendToWhatsApp("contactForm", contactTemplate);
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
